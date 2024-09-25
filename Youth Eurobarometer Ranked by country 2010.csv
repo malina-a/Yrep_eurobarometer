@@ -1,0 +1,25 @@
+Issue,AgeGroup,Proportion,Significant,Issues,country,year,rank
+v122,0,0.08571428571428572,FALSE,Crime - Country,ES,2010,3
+v123,0,0.5952380952380952,FALSE,Economic situation - Country,ES,2010,2
+v123,1,0.5824175824175825,FALSE,Economic situation - Country,ES,2010,2
+v124,1,0.12087912087912088,FALSE,Rising prices/inflation - Country,ES,2010,3
+v126,0,0.780952380952381,FALSE,Unemployment - Country,ES,2010,1
+v126,1,0.8131868131868132,FALSE,Unemployment - Country,ES,2010,1
+v122,0,0.2036613272311213,TRUE,Crime - Country,FR,2010,3
+v123,0,0.32036613272311215,FALSE,Economic situation - Country,FR,2010,2
+v123,1,0.26595744680851063,FALSE,Economic situation - Country,FR,2010,2
+v126,0,0.5697940503432495,FALSE,Unemployment - Country,FR,2010,1
+v126,1,0.5851063829787234,FALSE,Unemployment - Country,FR,2010,1
+v133,1,0.22340425531914893,FALSE,Pensions - Country,FR,2010,3
+v123,0,0.4137055837563452,FALSE,Economic situation - Country,IT,2010,2
+v123,1,0.375,FALSE,Economic situation - Country,IT,2010,2
+v124,0,0.24111675126903553,FALSE,Rising prices/inflation - Country,IT,2010,3
+v124,1,0.20833333333333334,FALSE,Rising prices/inflation - Country,IT,2010,3
+v126,0,0.46954314720812185,FALSE,Unemployment - Country,IT,2010,1
+v126,1,0.575,FALSE,Unemployment - Country,IT,2010,1
+v122,1,0.28,FALSE,Crime - Country,UK,2010,2
+v123,0,0.3614457831325301,TRUE,Economic situation - Country,UK,2010,1
+v123,1,0.26,TRUE,Economic situation - Country,UK,2010,3
+v126,0,0.357429718875502,FALSE,Unemployment - Country,UK,2010,2
+v126,1,0.43333333333333335,FALSE,Unemployment - Country,UK,2010,1
+v130,0,0.25903614457831325,FALSE,Immigration - Country,UK,2010,3

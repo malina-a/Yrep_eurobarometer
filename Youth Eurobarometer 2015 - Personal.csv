@@ -1,0 +1,37 @@
+Issue,AgeGroup,Proportion,Significant,Issues
+qa4_1,0,0.05672385168788047,FALSE,Crime - Personal
+qa4_1,1,0.05025773195876289,FALSE,Crime - Personal
+qa4_2,0,0.14111787493082456,TRUE,Economic situation - Personal
+qa4_2,1,0.1134020618556701,TRUE,Economic situation - Personal
+qa4_3,0,0.27476480354178195,FALSE,Rising prices/inflation - Personal
+qa4_3,1,0.2667525773195876,FALSE,Rising prices/inflation - Personal
+qa4_4,0,0.1754288876591035,TRUE,Taxation - Personal
+qa4_4,1,0.14304123711340205,TRUE,Taxation - Personal
+qa4_5,0,0.18428334255672385,TRUE,Unemployment - Personal
+qa4_5,1,0.30283505154639173,TRUE,Unemployment - Personal
+qa4_6,0,0.03901494189263974,FALSE,Terrorism - Personal
+qa4_6,1,0.037371134020618556,FALSE,Terrorism - Personal
+qa4_7,0,0.045102379634753734,TRUE,Housing - Personal
+qa4_7,1,0.09664948453608248,TRUE,Housing - Personal
+qa4_8,0,0.1466519092418373,FALSE,Financial situation household - Personal
+qa4_8,1,0.13015463917525774,FALSE,Financial situation household - Personal
+qa4_9,0,0.06502490315439956,TRUE,Immigration - Personal
+qa4_9,1,0.03221649484536082,TRUE,Immigration - Personal
+qa4_10,0,0.14277808522412838,TRUE,Health & social security - Personal
+qa4_10,1,0.07345360824742268,TRUE,Health & social security - Personal
+qa4_11,0,0.060597675705589375,TRUE,Education system - Personal
+qa4_11,1,0.17396907216494845,TRUE,Education system - Personal
+qa4_12,0,0.04454897620365246,FALSE,The environment - Personal
+qa4_12,1,0.029639175257731958,FALSE,The environment - Personal
+qa4_13,0,0.1770890979524073,TRUE,Pensions - Personal
+qa4_13,1,0.023195876288659795,TRUE,Pensions - Personal
+qa4_14,0,0.08384061981184283,TRUE,Working conditions - Personal
+qa4_14,1,0.1134020618556701,TRUE,Working conditions - Personal
+qa4_15,0,0.06170448256779192,FALSE,Living conditions - Personal
+qa4_15,1,0.05025773195876289,FALSE,Living conditions - Personal
+qa4_16,0,0.025733259546209187,FALSE,Other (spontaneous) - Personal
+qa4_16,1,0.027061855670103094,FALSE,Other (spontaneous) - Personal
+qa4_17,0,0.0600442722744881,FALSE,None (spontaneous) - Personal
+qa4_17,1,0.07474226804123711,FALSE,None (spontaneous) - Personal
+qa4_18,0,0.01079136690647482,FALSE,Don't know - Personal
+qa4_18,1,0.01804123711340206,FALSE,Don't know - Personal

@@ -1,0 +1,35 @@
+Issue,AgeGroup,Proportion,Significant,Issues
+qa3a_1,0,0.06986382474837181,FALSE,Crime - Country
+qa3a_1,1,0.05365853658536585,FALSE,Crime - Country
+qa3a_2,0,0.41503848431024276,TRUE,Economic situation - Country
+qa3a_2,1,0.3597560975609756,TRUE,Economic situation - Country
+qa3a_3,0,0.09502664298401421,TRUE,Rising prices/inflation - Country
+qa3a_3,1,0.13902439024390245,TRUE,Rising prices/inflation - Country
+qa3a_4,0,0.046181172291296625,FALSE,Taxation - Country
+qa3a_4,1,0.0524390243902439,FALSE,Taxation - Country
+qa3a_5,0,0.38987566607460034,FALSE,Unemployment - Country
+qa3a_5,1,0.3878048780487805,FALSE,Unemployment - Country
+qa3a_6,0,0.023386619301361752,FALSE,Terrorism - Country
+qa3a_6,1,0.014634146341463415,FALSE,Terrorism - Country
+qa3a_7,0,0.02930728241563055,TRUE,Housing - Country
+qa3a_7,1,0.045121951219512194,TRUE,Housing - Country
+qa3a_8,0,0.1216696269982238,FALSE,Government debt - Country
+qa3a_8,1,0.1024390243902439,FALSE,Government debt - Country
+qa3a_9,0,0.09088217880402605,TRUE,Immigration - Country
+qa3a_9,1,0.06219512195121951,TRUE,Immigration - Country
+qa3a_10,0,0.36027235050325634,TRUE,Health - Country
+qa3a_10,1,0.39878048780487807,TRUE,Health - Country
+qa3a_11,0,0.05831853167554766,TRUE,Education system - Country
+qa3a_11,1,0.09390243902439024,TRUE,Education system - Country
+qa3a_12,0,0.07696862048549438,TRUE,Pensions - Country
+qa3a_12,1,0.041463414634146344,TRUE,Pensions - Country
+qa3a_13,0,0.10805210183540556,TRUE,The environment & Climate change - Country
+qa3a_13,1,0.15609756097560976,TRUE,The environment & Climate change - Country
+qa3a_14,0,0.010361160449970397,FALSE,Energy supply - Country
+qa3a_14,1,0.013414634146341463,FALSE,Energy supply - Country
+qa3a_15,0,0.0053285968028419185,FALSE,Other (spontaneous) - Country
+qa3a_15,1,0.003658536585365854,FALSE,Other (spontaneous) - Country
+qa3a_16,0,2.960331557134399e-4,FALSE,None (spontaneous) - Country
+qa3a_16,1,0,FALSE,None (spontaneous) - Country
+qa3a_17,0,0.0026642984014209592,FALSE,Don't know - Country
+qa3a_17,1,0.0012195121951219512,FALSE,Don't know - Country
