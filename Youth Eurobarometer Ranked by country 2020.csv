@@ -1,0 +1,25 @@
+Issue,AgeGroup,Proportion,Significant,Issues,country,year,rank
+qa3a_2,0,0.4188034188034188,FALSE,Economic situation - Country,ES,2020,3
+qa3a_2,1,0.44041450777202074,FALSE,Economic situation - Country,ES,2020,3
+qa3a_5,0,0.463980463980464,FALSE,Unemployment - Country,ES,2020,2
+qa3a_5,1,0.49740932642487046,FALSE,Unemployment - Country,ES,2020,2
+qa3a_10,0,0.4884004884004884,FALSE,Health - Country,ES,2020,1
+qa3a_10,1,0.5284974093264249,FALSE,Health - Country,ES,2020,1
+qa3a_2,0,0.2593939393939394,FALSE,Economic situation - Country,FR,2020,3
+qa3a_5,0,0.36848484848484847,FALSE,Unemployment - Country,FR,2020,1
+qa3a_5,1,0.3701657458563536,FALSE,Unemployment - Country,FR,2020,2
+qa3a_10,0,0.2921212121212121,TRUE,Health - Country,FR,2020,2
+qa3a_10,1,0.3756906077348066,TRUE,Health - Country,FR,2020,1
+qa3a_13,1,0.23204419889502761,FALSE,The environment & Climate change - Country,FR,2020,3
+qa3a_2,0,0.48513674197384066,FALSE,Economic situation - Country,IT,2020,1
+qa3a_2,1,0.4032258064516129,FALSE,Economic situation - Country,IT,2020,2
+qa3a_5,0,0.4042806183115339,FALSE,Unemployment - Country,IT,2020,2
+qa3a_5,1,0.42473118279569894,FALSE,Unemployment - Country,IT,2020,1
+qa3a_10,0,0.24613555291319858,FALSE,Health - Country,IT,2020,3
+qa3a_10,1,0.25268817204301075,FALSE,Health - Country,IT,2020,3
+qa3a_2,0,0.48936170212765956,TRUE,Economic situation - Country,UK,2020,1
+qa3a_2,1,0.36923076923076925,TRUE,Economic situation - Country,UK,2020,2
+qa3a_5,0,0.3281075027995521,FALSE,Unemployment - Country,UK,2020,3
+qa3a_5,1,0.2923076923076923,FALSE,Unemployment - Country,UK,2020,3
+qa3a_10,0,0.4132138857782755,FALSE,Health - Country,UK,2020,2
+qa3a_10,1,0.4230769230769231,FALSE,Health - Country,UK,2020,1

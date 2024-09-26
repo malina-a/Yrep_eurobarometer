@@ -1666,7 +1666,467 @@ ggplot(prop_tables_df, aes(x = Issues, y = Proportion, fill = AgeGroup, alpha = 
 ggsave("Youth Eurobarometer 2015 - Personal.png")
 
 write_csv(prop_tables_df, file = "Youth Eurobarometer 2015 - Personal.csv")
+
 ```
+
+### analyse differences by country - sociotropic
+#### subset data
+```{r}
+fr15 <- filter(d15, country == "FR")
+es15 <- filter(d15, country == "ES")
+it15 <- filter(d15, country == "IT")
+uk15 <- filter(d15, country == "UK")
+
+```
+
+#### FR
+```{r}
+prop_tables_sub <- list()
+significant_vars <- character()  # Store significant variables
+
+# Iterate through each column name stored in `sel`
+for (i in sel1) {
+    contingency_table <- table(fr15$b31, fr15[[i]])
+    
+    # Skip columns with zero counts
+    if (all(contingency_table == 0)) {
+        cat("Skipping chi-squared test for", i, "due to zero counts.\n")
+        next
+    }
+    
+    # Perform chi-squared test
+    chi_test <- chisq.test(contingency_table)
+    
+    # Check if the p-value is less than 0.05 (significant result)
+    if (chi_test$p.value < 0.05) {
+        significant_vars <- c(significant_vars, i)  # Store significant variable name
+    }
+    
+    # Create proportional table
+    prop_table <- prop.table(contingency_table, margin = 1)
+    
+    # Store the proportional table in the list
+    prop_tables_sub[[i]] <- prop_table
+    print(prop_table)
+}
+# Initialize an empty data frame to store the aggregated results
+prop_tables_df <- data.frame(Issue = character(), 
+                             AgeGroup = character(), 
+                             Proportion = numeric(), 
+                             Significant = logical(),  # New column for significance
+                             stringsAsFactors = FALSE)
+
+# Iterate through each prop_table and aggregate the data for response "1"
+for (i in seq_along(prop_tables_sub)) {
+    # Extract the current proportional table
+    current_table <- prop_tables_sub[[i]]
+    
+    # Convert the table to a data frame
+    current_df <- as.data.frame(as.table(current_table))
+    
+    # Check if there are any rows where Var2 is 1
+    if (!any(current_df$Var2 == 1)) {
+        cat("Skipping variable", names(prop_tables_sub)[i], "due to no '1' responses.\n")
+        next  # Skip this iteration if no "1" values are present
+    }
+    
+    # Filter for the rows where the response (in Var2) is "1"
+    current_df <- current_df[current_df$Var2 == 1, ]
+    
+    # Add the issue column
+    current_df$Issue <- names(prop_tables_sub)[i]
+    
+    # Rename and select columns to match prop_tables_df
+    current_df <- current_df %>%
+        rename(AgeGroup = Var1, Proportion = Freq) %>%
+        select(Issue, AgeGroup, Proportion)
+    
+    # Add a column indicating if this variable was significant (based on Chi-square test)
+    current_df$Significant <- current_df$Issue %in% significant_vars
+    
+    # Bind to the main data frame
+    prop_tables_df <- rbind(prop_tables_df, current_df)
+}
+
+
+
+prop_tables_df[nrow(prop_tables_df) + 1, "Issue"] <- "qa3_15"
+
+# Extract the numeric part of 'Issue' and sort by it
+prop_tables_df <- prop_tables_df[order(as.numeric(gsub("\\D", "", prop_tables_df$Issue))), ]
+
+current_issues <- c(
+  "Crime",
+  "Economic situation",
+  "Rising prices/inflation",
+  "Taxation",
+  "Unemployment",
+  "Terrorism",
+  "Housing",
+  "Government debt",
+  "Immigration",
+  "Health & social security",
+  "Education system",
+  "Pensions",
+  "The environment",
+  "Other (spontaneous)",
+  "None (spontaneous)",
+  "Don't know"
+)
+
+
+# Update the names with "Currently"
+for (i in seq_along(current_issues)) {
+  issue_var <- paste0("qa3_", 1 + i - 1)  # Generate variable names from v199 onwards
+  prop_tables_df$Issues[prop_tables_df$Issue == issue_var] <- paste(current_issues[i], "- Country")
+}
+
+pfr15 <- prop_tables_df
+
+
+
+```
+
+#### IT
+```{r}
+prop_tables_sub <- list()
+significant_vars <- character()  # Store significant variables
+
+# Iterate through each column name stored in `sel`
+for (i in sel1) {
+    contingency_table <- table(it15$b31, it15[[i]])
+    
+    # Skip columns with zero counts
+    if (all(contingency_table == 0)) {
+        cat("Skipping chi-squared test for", i, "due to zero counts.\n")
+        next
+    }
+    
+    # Perform chi-squared test
+    chi_test <- chisq.test(contingency_table)
+    
+    # Check if the p-value is less than 0.05 (significant result)
+    if (chi_test$p.value < 0.05) {
+        significant_vars <- c(significant_vars, i)  # Store significant variable name
+    }
+    
+    # Create proportional table
+    prop_table <- prop.table(contingency_table, margin = 1)
+    
+    # Store the proportional table in the list
+    prop_tables_sub[[i]] <- prop_table
+    print(prop_table)
+}
+# Initialize an empty data frame to store the aggregated results
+prop_tables_df <- data.frame(Issue = character(), 
+                             AgeGroup = character(), 
+                             Proportion = numeric(), 
+                             Significant = logical(),  # New column for significance
+                             stringsAsFactors = FALSE)
+
+# Iterate through each prop_table and aggregate the data for response "1"
+for (i in seq_along(prop_tables_sub)) {
+    # Extract the current proportional table
+    current_table <- prop_tables_sub[[i]]
+    
+    # Convert the table to a data frame
+    current_df <- as.data.frame(as.table(current_table))
+    
+    # Check if there are any rows where Var2 is 1
+    if (!any(current_df$Var2 == 1)) {
+        cat("Skipping variable", names(prop_tables_sub)[i], "due to no '1' responses.\n")
+        next  # Skip this iteration if no "1" values are present
+    }
+    
+    # Filter for the rows where the response (in Var2) is "1"
+    current_df <- current_df[current_df$Var2 == 1, ]
+    
+    # Add the issue column
+    current_df$Issue <- names(prop_tables_sub)[i]
+    
+    # Rename and select columns to match prop_tables_df
+    current_df <- current_df %>%
+        rename(AgeGroup = Var1, Proportion = Freq) %>%
+        select(Issue, AgeGroup, Proportion)
+    
+    # Add a column indicating if this variable was significant (based on Chi-square test)
+    current_df$Significant <- current_df$Issue %in% significant_vars
+    
+    # Bind to the main data frame
+    prop_tables_df <- rbind(prop_tables_df, current_df)
+}
+
+
+
+current_issues <- c(
+  "Crime",
+  "Economic situation",
+  "Rising prices/inflation",
+  "Taxation",
+  "Unemployment",
+  "Terrorism",
+  "Housing",
+  "Government debt",
+  "Immigration",
+  "Health & social security",
+  "Education system",
+  "Pensions",
+  "The environment",
+  "Other (spontaneous)",
+  "None (spontaneous)",
+  "Don't know"
+)
+
+
+# Update the names with "Currently"
+for (i in seq_along(current_issues)) {
+  issue_var <- paste0("qa3_", 1 + i - 1)  # Generate variable names from v199 onwards
+  prop_tables_df$Issues[prop_tables_df$Issue == issue_var] <- paste(current_issues[i], "- Country")
+}
+
+pit15 <- prop_tables_df
+
+
+```
+
+
+#### ES
+```{r}
+prop_tables_sub <- list()
+significant_vars <- character()  # Store significant variables
+
+# Iterate through each column name stored in `sel`
+for (i in sel1) {
+    contingency_table <- table(es15$b31, es15[[i]])
+    
+    # Skip columns with zero counts
+    if (all(contingency_table == 0)) {
+        cat("Skipping chi-squared test for", i, "due to zero counts.\n")
+        next
+    }
+    
+    # Perform chi-squared test
+    chi_test <- chisq.test(contingency_table)
+    
+    # Check if the p-value is less than 0.05 (significant result)
+    if (chi_test$p.value < 0.05) {
+        significant_vars <- c(significant_vars, i)  # Store significant variable name
+    }
+    
+    # Create proportional table
+    prop_table <- prop.table(contingency_table, margin = 1)
+    
+    # Store the proportional table in the list
+    prop_tables_sub[[i]] <- prop_table
+    print(prop_table)
+}
+# Initialize an empty data frame to store the aggregated results
+prop_tables_df <- data.frame(Issue = character(), 
+                             AgeGroup = character(), 
+                             Proportion = numeric(), 
+                             Significant = logical(),  # New column for significance
+                             stringsAsFactors = FALSE)
+
+# Iterate through each prop_table and aggregate the data for response "1"
+for (i in seq_along(prop_tables_sub)) {
+    # Extract the current proportional table
+    current_table <- prop_tables_sub[[i]]
+    
+    # Convert the table to a data frame
+    current_df <- as.data.frame(as.table(current_table))
+    
+    # Check if there are any rows where Var2 is 1
+    if (!any(current_df$Var2 == 1)) {
+        cat("Skipping variable", names(prop_tables_sub)[i], "due to no '1' responses.\n")
+        next  # Skip this iteration if no "1" values are present
+    }
+    
+    # Filter for the rows where the response (in Var2) is "1"
+    current_df <- current_df[current_df$Var2 == 1, ]
+    
+    # Add the issue column
+    current_df$Issue <- names(prop_tables_sub)[i]
+    
+    # Rename and select columns to match prop_tables_df
+    current_df <- current_df %>%
+        rename(AgeGroup = Var1, Proportion = Freq) %>%
+        select(Issue, AgeGroup, Proportion)
+    
+    # Add a column indicating if this variable was significant (based on Chi-square test)
+    current_df$Significant <- current_df$Issue %in% significant_vars
+    
+    # Bind to the main data frame
+    prop_tables_df <- rbind(prop_tables_df, current_df)
+}
+
+
+
+
+current_issues <- c(
+  "Crime",
+  "Economic situation",
+  "Rising prices/inflation",
+  "Taxation",
+  "Unemployment",
+  "Terrorism",
+  "Housing",
+  "Government debt",
+  "Immigration",
+  "Health & social security",
+  "Education system",
+  "Pensions",
+  "The environment",
+  "Other (spontaneous)",
+  "None (spontaneous)",
+  "Don't know"
+)
+
+
+# Update the names with "Currently"
+for (i in seq_along(current_issues)) {
+  issue_var <- paste0("qa3_", 1 + i - 1)  # Generate variable names from v199 onwards
+  prop_tables_df$Issues[prop_tables_df$Issue == issue_var] <- paste(current_issues[i], "- Country")
+}
+
+pes15 <- prop_tables_df
+
+
+
+```
+
+
+#### UK
+```{r}
+prop_tables_sub <- list()
+significant_vars <- character()  # Store significant variables
+
+# Iterate through each column name stored in `sel`
+for (i in sel1) {
+    contingency_table <- table(uk15$b31, uk15[[i]])
+    
+    # Skip columns with zero counts
+    if (all(contingency_table == 0)) {
+        cat("Skipping chi-squared test for", i, "due to zero counts.\n")
+        next
+    }
+    
+    # Perform chi-squared test
+    chi_test <- chisq.test(contingency_table)
+    
+    # Check if the p-value is less than 0.05 (significant result)
+    if (chi_test$p.value < 0.05) {
+        significant_vars <- c(significant_vars, i)  # Store significant variable name
+    }
+    
+    # Create proportional table
+    prop_table <- prop.table(contingency_table, margin = 1)
+    
+    # Store the proportional table in the list
+    prop_tables_sub[[i]] <- prop_table
+    print(prop_table)
+}
+# Initialize an empty data frame to store the aggregated results
+prop_tables_df <- data.frame(Issue = character(), 
+                             AgeGroup = character(), 
+                             Proportion = numeric(), 
+                             Significant = logical(),  # New column for significance
+                             stringsAsFactors = FALSE)
+
+# Iterate through each prop_table and aggregate the data for response "1"
+for (i in seq_along(prop_tables_sub)) {
+    # Extract the current proportional table
+    current_table <- prop_tables_sub[[i]]
+    
+    # Convert the table to a data frame
+    current_df <- as.data.frame(as.table(current_table))
+    
+    # Check if there are any rows where Var2 is 1
+    if (!any(current_df$Var2 == 1)) {
+        cat("Skipping variable", names(prop_tables_sub)[i], "due to no '1' responses.\n")
+        next  # Skip this iteration if no "1" values are present
+    }
+    
+    # Filter for the rows where the response (in Var2) is "1"
+    current_df <- current_df[current_df$Var2 == 1, ]
+    
+    # Add the issue column
+    current_df$Issue <- names(prop_tables_sub)[i]
+    
+    # Rename and select columns to match prop_tables_df
+    current_df <- current_df %>%
+        rename(AgeGroup = Var1, Proportion = Freq) %>%
+        select(Issue, AgeGroup, Proportion)
+    
+    # Add a column indicating if this variable was significant (based on Chi-square test)
+    current_df$Significant <- current_df$Issue %in% significant_vars
+    
+    # Bind to the main data frame
+    prop_tables_df <- rbind(prop_tables_df, current_df)
+}
+
+
+
+prop_tables_df[nrow(prop_tables_df) + 1, "Issue"] <- "qa3_15"
+
+# Extract the numeric part of 'Issue' and sort by it
+prop_tables_df <- prop_tables_df[order(as.numeric(gsub("\\D", "", prop_tables_df$Issue))), ]
+
+current_issues <- c(
+  "Crime",
+  "Economic situation",
+  "Rising prices/inflation",
+  "Taxation",
+  "Unemployment",
+  "Terrorism",
+  "Housing",
+  "Government debt",
+  "Immigration",
+  "Health & social security",
+  "Education system",
+  "Pensions",
+  "The environment",
+  "Other (spontaneous)",
+  "None (spontaneous)",
+  "Don't know"
+)
+
+
+# Update the names with "Currently"
+for (i in seq_along(current_issues)) {
+  issue_var <- paste0("qa3_", 1 + i - 1)  # Generate variable names from v199 onwards
+  prop_tables_df$Issues[prop_tables_df$Issue == issue_var] <- paste(current_issues[i], "- Country")
+}
+
+puk15 <- prop_tables_df
+
+
+
+```
+
+
+#### merging (only include sociotropic) and rank
+```{r}
+puk15$country <- "UK"
+pfr15$country <- "FR"
+pit15$country <- "IT"
+pes15$country <- "ES"
+
+
+m15 <- rbind(pes15,pfr15,pit15,puk15)
+m15$year <- 2015
+
+m15 <- m15[!is.na(m15$Proportion), ]
+
+m15 <- m15 |>
+  group_by(country, AgeGroup) |>
+  mutate(rank = rank(-Proportion)) |>  # Rank in descending order of Proportion
+  filter(rank <= 3)  # Keep only the top 3 ranked issues
+
+write_csv(m15, file = "Youth Eurobarometer Ranked by country 2015.csv")
+
+
+```
+
 
 ## 2020
 ### Loading data
@@ -1915,3 +2375,481 @@ ggsave("Youth Eurobarometer 2020 - Personal.png")
 
 write_csv(prop_tables_df, file = "Youth Eurobarometer 2020 - Personal.csv")
 ```
+
+### analyse differences across countries - sociotropic
+#### subsetting
+```{r}
+fr20 <- filter(d20, isocntry == "FR")
+it20 <- filter(d20, isocntry == "IT")
+es20 <- filter(d20, isocntry == "ES")
+uk20 <- filter(d20, isocntry == "GB")
+
+```
+
+#### FR
+```{r}
+prop_tables_sub <- list()
+significant_vars <- character()  # Store significant variables
+
+# Iterate through each column name stored in `sel`
+for (i in sel1) {
+    contingency_table <- table(fr20$b31, fr20[[i]])
+    
+    # Skip columns with zero counts
+    if (all(contingency_table == 0)) {
+        cat("Skipping chi-squared test for", i, "due to zero counts.\n")
+        next
+    }
+    
+    # Perform chi-squared test
+    chi_test <- chisq.test(contingency_table)
+    
+    # Check if the p-value is less than 0.05 (significant result)
+    if (chi_test$p.value < 0.05) {
+        significant_vars <- c(significant_vars, i)  # Store significant variable name
+    }
+    
+    # Create proportional table
+    prop_table <- prop.table(contingency_table, margin = 1)
+    
+    # Store the proportional table in the list
+    prop_tables_sub[[i]] <- prop_table
+    print(prop_table)
+}
+# Initialize an empty data frame to store the aggregated results
+prop_tables_df <- data.frame(Issue = character(), 
+                             AgeGroup = character(), 
+                             Proportion = numeric(), 
+                             Significant = logical(),  # New column for significance
+                             stringsAsFactors = FALSE)
+
+# Iterate through each prop_table and aggregate the data for response "1"
+for (i in seq_along(prop_tables_sub)) {
+    # Extract the current proportional table
+    current_table <- prop_tables_sub[[i]]
+    
+    # Convert the table to a data frame
+    current_df <- as.data.frame(as.table(current_table))
+    
+    # Check if there are any rows where Var2 is 1
+    if (!any(current_df$Var2 == 1)) {
+        cat("Skipping variable", names(prop_tables_sub)[i], "due to no '1' responses.\n")
+        next  # Skip this iteration if no "1" values are present
+    }
+    
+    # Filter for the rows where the response (in Var2) is "1"
+    current_df <- current_df[current_df$Var2 == 1, ]
+    
+    # Add the issue column
+    current_df$Issue <- names(prop_tables_sub)[i]
+    
+    # Rename and select columns to match prop_tables_df
+    current_df <- current_df %>%
+        rename(AgeGroup = Var1, Proportion = Freq) %>%
+        select(Issue, AgeGroup, Proportion)
+    
+    # Add a column indicating if this variable was significant (based on Chi-square test)
+    current_df$Significant <- current_df$Issue %in% significant_vars
+    
+    # Bind to the main data frame
+    prop_tables_df <- rbind(prop_tables_df, current_df)
+}
+
+
+
+prop_tables_df[nrow(prop_tables_df) + 1, "Issue"] <- "qa3_15"
+
+# Extract the numeric part of 'Issue' and sort by it
+prop_tables_df <- prop_tables_df[order(as.numeric(gsub("\\D", "", prop_tables_df$Issue))), ]
+
+current_issues <- c(
+  "Crime",
+  "Economic situation",
+  "Rising prices/inflation",
+  "Taxation",
+  "Unemployment",
+  "Terrorism",
+  "Housing",
+  "Government debt",
+  "Immigration",
+  "Health",
+  "Education system",
+  "Pensions",
+  "The environment & Climate change",
+  "Energy supply",
+  "Other (spontaneous)",
+  "None (spontaneous)",
+  "Don't know"
+)
+
+
+# Update the names with "Currently"
+for (i in seq_along(current_issues)) {
+  issue_var <- paste0("qa3a_", 1 + i - 1)  # Generate variable names from v199 onwards
+  prop_tables_df$Issues[prop_tables_df$Issue == issue_var] <- paste(current_issues[i], "- Country")
+}
+
+pfr20 <- prop_tables_df
+
+```
+
+#### ES
+```{r}
+prop_tables_sub <- list()
+significant_vars <- character()  # Store significant variables
+
+# Iterate through each column name stored in `sel`
+for (i in sel1) {
+    contingency_table <- table(es20$b31, es20[[i]])
+    
+    # Skip columns with zero counts
+    if (all(contingency_table == 0)) {
+        cat("Skipping chi-squared test for", i, "due to zero counts.\n")
+        next
+    }
+    
+    # Perform chi-squared test
+    chi_test <- chisq.test(contingency_table)
+    
+    # Check if the p-value is less than 0.05 (significant result)
+    if (chi_test$p.value < 0.05) {
+        significant_vars <- c(significant_vars, i)  # Store significant variable name
+    }
+    
+    # Create proportional table
+    prop_table <- prop.table(contingency_table, margin = 1)
+    
+    # Store the proportional table in the list
+    prop_tables_sub[[i]] <- prop_table
+    print(prop_table)
+}
+# Initialize an empty data frame to store the aggregated results
+prop_tables_df <- data.frame(Issue = character(), 
+                             AgeGroup = character(), 
+                             Proportion = numeric(), 
+                             Significant = logical(),  # New column for significance
+                             stringsAsFactors = FALSE)
+
+# Iterate through each prop_table and aggregate the data for response "1"
+for (i in seq_along(prop_tables_sub)) {
+    # Extract the current proportional table
+    current_table <- prop_tables_sub[[i]]
+    
+    # Convert the table to a data frame
+    current_df <- as.data.frame(as.table(current_table))
+    
+    # Check if there are any rows where Var2 is 1
+    if (!any(current_df$Var2 == 1)) {
+        cat("Skipping variable", names(prop_tables_sub)[i], "due to no '1' responses.\n")
+        next  # Skip this iteration if no "1" values are present
+    }
+    
+    # Filter for the rows where the response (in Var2) is "1"
+    current_df <- current_df[current_df$Var2 == 1, ]
+    
+    # Add the issue column
+    current_df$Issue <- names(prop_tables_sub)[i]
+    
+    # Rename and select columns to match prop_tables_df
+    current_df <- current_df %>%
+        rename(AgeGroup = Var1, Proportion = Freq) %>%
+        select(Issue, AgeGroup, Proportion)
+    
+    # Add a column indicating if this variable was significant (based on Chi-square test)
+    current_df$Significant <- current_df$Issue %in% significant_vars
+    
+    # Bind to the main data frame
+    prop_tables_df <- rbind(prop_tables_df, current_df)
+}
+
+
+
+prop_tables_df[nrow(prop_tables_df) + 1, "Issue"] <- "qa3_16"
+
+# Extract the numeric part of 'Issue' and sort by it
+prop_tables_df <- prop_tables_df[order(as.numeric(gsub("\\D", "", prop_tables_df$Issue))), ]
+
+current_issues <- c(
+  "Crime",
+  "Economic situation",
+  "Rising prices/inflation",
+  "Taxation",
+  "Unemployment",
+  "Terrorism",
+  "Housing",
+  "Government debt",
+  "Immigration",
+  "Health",
+  "Education system",
+  "Pensions",
+  "The environment & Climate change",
+  "Energy supply",
+  "Other (spontaneous)",
+  "None (spontaneous)",
+  "Don't know"
+)
+
+
+# Update the names with "Currently"
+for (i in seq_along(current_issues)) {
+  issue_var <- paste0("qa3a_", 1 + i - 1)  # Generate variable names from v199 onwards
+  prop_tables_df$Issues[prop_tables_df$Issue == issue_var] <- paste(current_issues[i], "- Country")
+}
+
+pes20 <- prop_tables_df
+
+```
+
+#### IT
+```{r}
+prop_tables_sub <- list()
+significant_vars <- character()  # Store significant variables
+
+# Iterate through each column name stored in `sel`
+for (i in sel1) {
+    contingency_table <- table(it20$b31, it20[[i]])
+    
+    # Skip columns with zero counts
+    if (all(contingency_table == 0)) {
+        cat("Skipping chi-squared test for", i, "due to zero counts.\n")
+        next
+    }
+    
+    # Perform chi-squared test
+    chi_test <- chisq.test(contingency_table)
+    
+    # Check if the p-value is less than 0.05 (significant result)
+    if (chi_test$p.value < 0.05) {
+        significant_vars <- c(significant_vars, i)  # Store significant variable name
+    }
+    
+    # Create proportional table
+    prop_table <- prop.table(contingency_table, margin = 1)
+    
+    # Store the proportional table in the list
+    prop_tables_sub[[i]] <- prop_table
+    print(prop_table)
+}
+# Initialize an empty data frame to store the aggregated results
+prop_tables_df <- data.frame(Issue = character(), 
+                             AgeGroup = character(), 
+                             Proportion = numeric(), 
+                             Significant = logical(),  # New column for significance
+                             stringsAsFactors = FALSE)
+
+# Iterate through each prop_table and aggregate the data for response "1"
+for (i in seq_along(prop_tables_sub)) {
+    # Extract the current proportional table
+    current_table <- prop_tables_sub[[i]]
+    
+    # Convert the table to a data frame
+    current_df <- as.data.frame(as.table(current_table))
+    
+    # Check if there are any rows where Var2 is 1
+    if (!any(current_df$Var2 == 1)) {
+        cat("Skipping variable", names(prop_tables_sub)[i], "due to no '1' responses.\n")
+        next  # Skip this iteration if no "1" values are present
+    }
+    
+    # Filter for the rows where the response (in Var2) is "1"
+    current_df <- current_df[current_df$Var2 == 1, ]
+    
+    # Add the issue column
+    current_df$Issue <- names(prop_tables_sub)[i]
+    
+    # Rename and select columns to match prop_tables_df
+    current_df <- current_df %>%
+        rename(AgeGroup = Var1, Proportion = Freq) %>%
+        select(Issue, AgeGroup, Proportion)
+    
+    # Add a column indicating if this variable was significant (based on Chi-square test)
+    current_df$Significant <- current_df$Issue %in% significant_vars
+    
+    # Bind to the main data frame
+    prop_tables_df <- rbind(prop_tables_df, current_df)
+}
+
+
+
+prop_tables_df[nrow(prop_tables_df) + 1, "Issue"] <- "qa3_16"
+prop_tables_df[nrow(prop_tables_df) + 1, "Issue"] <- "qa3_17"
+
+
+# Extract the numeric part of 'Issue' and sort by it
+prop_tables_df <- prop_tables_df[order(as.numeric(gsub("\\D", "", prop_tables_df$Issue))), ]
+
+current_issues <- c(
+  "Crime",
+  "Economic situation",
+  "Rising prices/inflation",
+  "Taxation",
+  "Unemployment",
+  "Terrorism",
+  "Housing",
+  "Government debt",
+  "Immigration",
+  "Health",
+  "Education system",
+  "Pensions",
+  "The environment & Climate change",
+  "Energy supply",
+  "Other (spontaneous)",
+  "None (spontaneous)",
+  "Don't know"
+)
+
+
+# Update the names with "Currently"
+for (i in seq_along(current_issues)) {
+  issue_var <- paste0("qa3a_", 1 + i - 1)  # Generate variable names from v199 onwards
+  prop_tables_df$Issues[prop_tables_df$Issue == issue_var] <- paste(current_issues[i], "- Country")
+}
+
+pit20 <- prop_tables_df
+
+```
+
+
+#### UK
+```{r}
+prop_tables_sub <- list()
+significant_vars <- character()  # Store significant variables
+
+# Iterate through each column name stored in `sel`
+for (i in sel1) {
+    contingency_table <- table(uk20$b31, uk20[[i]])
+    
+    # Skip columns with zero counts
+    if (all(contingency_table == 0)) {
+        cat("Skipping chi-squared test for", i, "due to zero counts.\n")
+        next
+    }
+    
+    # Perform chi-squared test
+    chi_test <- chisq.test(contingency_table)
+    
+    # Check if the p-value is less than 0.05 (significant result)
+    if (chi_test$p.value < 0.05) {
+        significant_vars <- c(significant_vars, i)  # Store significant variable name
+    }
+    
+    # Create proportional table
+    prop_table <- prop.table(contingency_table, margin = 1)
+    
+    # Store the proportional table in the list
+    prop_tables_sub[[i]] <- prop_table
+    print(prop_table)
+}
+# Initialize an empty data frame to store the aggregated results
+prop_tables_df <- data.frame(Issue = character(), 
+                             AgeGroup = character(), 
+                             Proportion = numeric(), 
+                             Significant = logical(),  # New column for significance
+                             stringsAsFactors = FALSE)
+
+# Iterate through each prop_table and aggregate the data for response "1"
+for (i in seq_along(prop_tables_sub)) {
+    # Extract the current proportional table
+    current_table <- prop_tables_sub[[i]]
+    
+    # Convert the table to a data frame
+    current_df <- as.data.frame(as.table(current_table))
+    
+    # Check if there are any rows where Var2 is 1
+    if (!any(current_df$Var2 == 1)) {
+        cat("Skipping variable", names(prop_tables_sub)[i], "due to no '1' responses.\n")
+        next  # Skip this iteration if no "1" values are present
+    }
+    
+    # Filter for the rows where the response (in Var2) is "1"
+    current_df <- current_df[current_df$Var2 == 1, ]
+    
+    # Add the issue column
+    current_df$Issue <- names(prop_tables_sub)[i]
+    
+    # Rename and select columns to match prop_tables_df
+    current_df <- current_df %>%
+        rename(AgeGroup = Var1, Proportion = Freq) %>%
+        select(Issue, AgeGroup, Proportion)
+    
+    # Add a column indicating if this variable was significant (based on Chi-square test)
+    current_df$Significant <- current_df$Issue %in% significant_vars
+    
+    # Bind to the main data frame
+    prop_tables_df <- rbind(prop_tables_df, current_df)
+}
+
+
+
+prop_tables_df[nrow(prop_tables_df) + 1, "Issue"] <- "qa3_16"
+prop_tables_df[nrow(prop_tables_df) + 1, "Issue"] <- "qa3_17"
+
+
+# Extract the numeric part of 'Issue' and sort by it
+prop_tables_df <- prop_tables_df[order(as.numeric(gsub("\\D", "", prop_tables_df$Issue))), ]
+
+current_issues <- c(
+  "Crime",
+  "Economic situation",
+  "Rising prices/inflation",
+  "Taxation",
+  "Unemployment",
+  "Terrorism",
+  "Housing",
+  "Government debt",
+  "Immigration",
+  "Health",
+  "Education system",
+  "Pensions",
+  "The environment & Climate change",
+  "Energy supply",
+  "Other (spontaneous)",
+  "None (spontaneous)",
+  "Don't know"
+)
+
+
+# Update the names with "Currently"
+for (i in seq_along(current_issues)) {
+  issue_var <- paste0("qa3a_", 1 + i - 1)  # Generate variable names from v199 onwards
+  prop_tables_df$Issues[prop_tables_df$Issue == issue_var] <- paste(current_issues[i], "- Country")
+}
+
+puk20 <- prop_tables_df
+
+```
+
+
+
+#### merging (only include sociotropic) and rank
+```{r}
+puk20$country <- "UK"
+pfr20$country <- "FR"
+pit20$country <- "IT"
+pes20$country <- "ES"
+
+
+m20 <- rbind(pes20,pfr20,pit20,puk20)
+m20$year <- 2020
+
+m20 <- m20[!is.na(m20$Proportion), ]
+
+m20 <- m20 |>
+  group_by(country, AgeGroup) |>
+  mutate(rank = rank(-Proportion)) |>  # Rank in descending order of Proportion
+  filter(rank <= 3)  # Keep only the top 3 ranked issues
+
+write_csv(m20, file = "Youth Eurobarometer Ranked by country 2020.csv")
+
+
+```
+
+## Merging of all by country analyses
+```{r}
+
+mall <- rbind(m06,m10,m15,m20)
+
+write_csv(mall, file = "Youth Eurobarometer Ranked by country - all.csv")
+
+```
+

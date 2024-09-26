@@ -1,0 +1,99 @@
+Issue,AgeGroup,Proportion,Significant,Issues,country,year,rank
+v200,0,0.33762886597938147,FALSE,Immigration - Currently,ES,2006,3
+v202,0,0.4536082474226804,FALSE,Terrorism - Currently,ES,2006,1
+v202,1,0.3794642857142857,FALSE,Terrorism - Currently,ES,2006,3
+v205,0,0.41237113402061853,FALSE,Living costs - Currently,ES,2006,2
+v205,1,0.4107142857142857,FALSE,Living costs - Currently,ES,2006,2
+v209,1,0.4419642857142857,TRUE,Unemployment - Currently,ES,2006,1
+v199,0,0.3350189633375474,TRUE,Pensions - Currently,FR,2006,3
+v205,0,0.3906447534766119,TRUE,Living costs - Currently,FR,2006,1
+v205,1,0.5656108597285068,TRUE,Living costs - Currently,FR,2006,1
+v209,0,0.37041719342604296,TRUE,Unemployment - Currently,FR,2006,2
+v209,1,0.4660633484162896,TRUE,Unemployment - Currently,FR,2006,2
+v213,1,0.33031674208144796,TRUE,Education - Currently,FR,2006,3
+v199,0,0.2810539523212045,FALSE,Pensions - Currently,IT,2006,3
+v200,1,0.26556016597510373,FALSE,Immigration - Currently,IT,2006,3
+v202,0,0.2810539523212045,FALSE,Terrorism - Currently,IT,2006,3
+v202,1,0.3070539419087137,FALSE,Terrorism - Currently,IT,2006,2
+v205,0,0.4316185696361355,FALSE,Living costs - Currently,IT,2006,1
+v205,1,0.48132780082987553,FALSE,Living costs - Currently,IT,2006,1
+v209,0,0.3124215809284818,TRUE,Unemployment - Currently,IT,2006,2
+v209,1,0.48132780082987553,TRUE,Unemployment - Currently,IT,2006,1
+v199,0,0.3107074569789675,TRUE,Pensions - Currently,UK,2006,2
+v201,0,0.3049713193116635,TRUE,Health care - Currently,UK,2006,3
+v202,1,0.3940520446096654,TRUE,Terrorism - Currently,UK,2006,3
+v205,1,0.4052044609665427,TRUE,Living costs - Currently,UK,2006,2
+v210,0,0.37667304015296366,TRUE,Crime - Currently,UK,2006,1
+v210,1,0.4684014869888476,TRUE,Crime - Currently,UK,2006,1
+v122,0,0.08571428571428572,FALSE,Crime - Country,ES,2010,3
+v123,0,0.5952380952380952,FALSE,Economic situation - Country,ES,2010,2
+v123,1,0.5824175824175825,FALSE,Economic situation - Country,ES,2010,2
+v124,1,0.12087912087912088,FALSE,Rising prices/inflation - Country,ES,2010,3
+v126,0,0.780952380952381,FALSE,Unemployment - Country,ES,2010,1
+v126,1,0.8131868131868132,FALSE,Unemployment - Country,ES,2010,1
+v122,0,0.2036613272311213,TRUE,Crime - Country,FR,2010,3
+v123,0,0.32036613272311215,FALSE,Economic situation - Country,FR,2010,2
+v123,1,0.26595744680851063,FALSE,Economic situation - Country,FR,2010,2
+v126,0,0.5697940503432495,FALSE,Unemployment - Country,FR,2010,1
+v126,1,0.5851063829787234,FALSE,Unemployment - Country,FR,2010,1
+v133,1,0.22340425531914893,FALSE,Pensions - Country,FR,2010,3
+v123,0,0.4137055837563452,FALSE,Economic situation - Country,IT,2010,2
+v123,1,0.375,FALSE,Economic situation - Country,IT,2010,2
+v124,0,0.24111675126903553,FALSE,Rising prices/inflation - Country,IT,2010,3
+v124,1,0.20833333333333334,FALSE,Rising prices/inflation - Country,IT,2010,3
+v126,0,0.46954314720812185,FALSE,Unemployment - Country,IT,2010,1
+v126,1,0.575,FALSE,Unemployment - Country,IT,2010,1
+v122,1,0.28,FALSE,Crime - Country,UK,2010,2
+v123,0,0.3614457831325301,TRUE,Economic situation - Country,UK,2010,1
+v123,1,0.26,TRUE,Economic situation - Country,UK,2010,3
+v126,0,0.357429718875502,FALSE,Unemployment - Country,UK,2010,2
+v126,1,0.43333333333333335,FALSE,Unemployment - Country,UK,2010,1
+v130,0,0.25903614457831325,FALSE,Immigration - Country,UK,2010,3
+qa3_2,0,0.36073619631901843,FALSE,Economic situation - Country,ES,2015,2
+qa3_2,1,0.33689839572192515,FALSE,Economic situation - Country,ES,2015,2
+qa3_5,0,0.7889570552147239,TRUE,Unemployment - Country,ES,2015,1
+qa3_5,1,0.7058823529411765,TRUE,Unemployment - Country,ES,2015,1
+qa3_10,0,0.15460122699386503,FALSE,Health & social security - Country,ES,2015,3
+qa3_11,1,0.16042780748663102,TRUE,Education system - Country,ES,2015,3
+qa3_2,0,0.2386634844868735,TRUE,Economic situation - Country,FR,2015,2
+qa3_3,1,0.1925133689839572,FALSE,Rising prices/inflation - Country,FR,2015,2
+qa3_5,0,0.5632458233890215,FALSE,Unemployment - Country,FR,2015,1
+qa3_5,1,0.6256684491978609,FALSE,Unemployment - Country,FR,2015,1
+qa3_6,0,0.1467780429594272,FALSE,Terrorism - Country,FR,2015,3
+qa3_8,1,0.16042780748663102,FALSE,Government debt - Country,FR,2015,3
+qa3_2,0,0.2979214780600462,FALSE,Economic situation - Country,IT,2015,2
+qa3_2,1,0.3431952662721893,FALSE,Economic situation - Country,IT,2015,2
+qa3_4,0,0.2528868360277136,TRUE,Taxation - Country,IT,2015,3
+qa3_5,0,0.5300230946882217,TRUE,Unemployment - Country,IT,2015,1
+qa3_5,1,0.621301775147929,TRUE,Unemployment - Country,IT,2015,1
+qa3_9,1,0.2485207100591716,FALSE,Immigration - Country,IT,2015,3
+qa3_3,1,0.23605150214592274,TRUE,Rising prices/inflation - Country,UK,2015,3
+qa3_5,1,0.33047210300429186,TRUE,Unemployment - Country,UK,2015,1
+qa3_6,0,0.2009132420091324,TRUE,Terrorism - Country,UK,2015,3
+qa3_9,0,0.365296803652968,TRUE,Immigration - Country,UK,2015,1
+qa3_9,1,0.24892703862660945,TRUE,Immigration - Country,UK,2015,2
+qa3_10,0,0.32602739726027397,TRUE,Health & social security - Country,UK,2015,2
+qa3a_2,0,0.4188034188034188,FALSE,Economic situation - Country,ES,2020,3
+qa3a_2,1,0.44041450777202074,FALSE,Economic situation - Country,ES,2020,3
+qa3a_5,0,0.463980463980464,FALSE,Unemployment - Country,ES,2020,2
+qa3a_5,1,0.49740932642487046,FALSE,Unemployment - Country,ES,2020,2
+qa3a_10,0,0.4884004884004884,FALSE,Health - Country,ES,2020,1
+qa3a_10,1,0.5284974093264249,FALSE,Health - Country,ES,2020,1
+qa3a_2,0,0.2593939393939394,FALSE,Economic situation - Country,FR,2020,3
+qa3a_5,0,0.36848484848484847,FALSE,Unemployment - Country,FR,2020,1
+qa3a_5,1,0.3701657458563536,FALSE,Unemployment - Country,FR,2020,2
+qa3a_10,0,0.2921212121212121,TRUE,Health - Country,FR,2020,2
+qa3a_10,1,0.3756906077348066,TRUE,Health - Country,FR,2020,1
+qa3a_13,1,0.23204419889502761,FALSE,The environment & Climate change - Country,FR,2020,3
+qa3a_2,0,0.48513674197384066,FALSE,Economic situation - Country,IT,2020,1
+qa3a_2,1,0.4032258064516129,FALSE,Economic situation - Country,IT,2020,2
+qa3a_5,0,0.4042806183115339,FALSE,Unemployment - Country,IT,2020,2
+qa3a_5,1,0.42473118279569894,FALSE,Unemployment - Country,IT,2020,1
+qa3a_10,0,0.24613555291319858,FALSE,Health - Country,IT,2020,3
+qa3a_10,1,0.25268817204301075,FALSE,Health - Country,IT,2020,3
+qa3a_2,0,0.48936170212765956,TRUE,Economic situation - Country,UK,2020,1
+qa3a_2,1,0.36923076923076925,TRUE,Economic situation - Country,UK,2020,2
+qa3a_5,0,0.3281075027995521,FALSE,Unemployment - Country,UK,2020,3
+qa3a_5,1,0.2923076923076923,FALSE,Unemployment - Country,UK,2020,3
+qa3a_10,0,0.4132138857782755,FALSE,Health - Country,UK,2020,2
+qa3a_10,1,0.4230769230769231,FALSE,Health - Country,UK,2020,1

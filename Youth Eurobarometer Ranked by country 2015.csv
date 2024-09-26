@@ -1,0 +1,25 @@
+Issue,AgeGroup,Proportion,Significant,Issues,country,year,rank
+qa3_2,0,0.36073619631901843,FALSE,Economic situation - Country,ES,2015,2
+qa3_2,1,0.33689839572192515,FALSE,Economic situation - Country,ES,2015,2
+qa3_5,0,0.7889570552147239,TRUE,Unemployment - Country,ES,2015,1
+qa3_5,1,0.7058823529411765,TRUE,Unemployment - Country,ES,2015,1
+qa3_10,0,0.15460122699386503,FALSE,Health & social security - Country,ES,2015,3
+qa3_11,1,0.16042780748663102,TRUE,Education system - Country,ES,2015,3
+qa3_2,0,0.2386634844868735,TRUE,Economic situation - Country,FR,2015,2
+qa3_3,1,0.1925133689839572,FALSE,Rising prices/inflation - Country,FR,2015,2
+qa3_5,0,0.5632458233890215,FALSE,Unemployment - Country,FR,2015,1
+qa3_5,1,0.6256684491978609,FALSE,Unemployment - Country,FR,2015,1
+qa3_6,0,0.1467780429594272,FALSE,Terrorism - Country,FR,2015,3
+qa3_8,1,0.16042780748663102,FALSE,Government debt - Country,FR,2015,3
+qa3_2,0,0.2979214780600462,FALSE,Economic situation - Country,IT,2015,2
+qa3_2,1,0.3431952662721893,FALSE,Economic situation - Country,IT,2015,2
+qa3_4,0,0.2528868360277136,TRUE,Taxation - Country,IT,2015,3
+qa3_5,0,0.5300230946882217,TRUE,Unemployment - Country,IT,2015,1
+qa3_5,1,0.621301775147929,TRUE,Unemployment - Country,IT,2015,1
+qa3_9,1,0.2485207100591716,FALSE,Immigration - Country,IT,2015,3
+qa3_3,1,0.23605150214592274,TRUE,Rising prices/inflation - Country,UK,2015,3
+qa3_5,1,0.33047210300429186,TRUE,Unemployment - Country,UK,2015,1
+qa3_6,0,0.2009132420091324,TRUE,Terrorism - Country,UK,2015,3
+qa3_9,0,0.365296803652968,TRUE,Immigration - Country,UK,2015,1
+qa3_9,1,0.24892703862660945,TRUE,Immigration - Country,UK,2015,2
+qa3_10,0,0.32602739726027397,TRUE,Health & social security - Country,UK,2015,2
